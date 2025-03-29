@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID Scanner</title>
+    <link rel="stylesheet" href="/static/css/scan.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputField = document.getElementById("rfid-input");
+            
+            inputField.addEventListener("input", function () {
+                if (inputField.value.length >= 10) {  // Adjust length if needed
+                    document.getElementById("rfid-form").submit();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Scan Your RFID Card</h2>
+    <form id="rfid-form" method="POST" action="{% url 'scan' %}">
+        {% csrf_token %}
+        <input type="text" id="rfid-input" name="rfid_code" autocomplete="off" required>
+    </form>
+</body>
+</html>
