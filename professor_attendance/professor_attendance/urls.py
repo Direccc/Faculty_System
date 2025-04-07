@@ -35,4 +35,5 @@ urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     path("logout/", views.user_logout, name="logout"),
     path('resend_otp/', views.resend_otp, name='resend_otp'),
+    path('hash-demo/', views.hash_demo_view, name='hash_demo'),
 ]

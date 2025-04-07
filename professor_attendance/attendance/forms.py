@@ -25,3 +25,6 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class HashForm(forms.Form):
+    message = forms.CharField(label='Enter text', max_length=255)

@@ -3,6 +3,8 @@ import datetime
 import random
 import base64
 import pytz
+import hashlib
+import binascii  
 
 from .models import RFIDLog, User
 from django.shortcuts import render, redirect
@@ -19,6 +21,7 @@ from google_auth_oauthlib.flow import Flow
 from email.mime.text import MIMEText
 from django.contrib import messages
 from .forms import RegisterForm
+from .forms import HashForm
 from .models import RFIDLog, AttendanceLog
 from .models import OTPVerification
 from datetime import timedelta
@@ -28,6 +31,7 @@ from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
+
 
 
 # Set your local timezone (e.g., "Asia/Manila" for the Philippines)
@@ -96,6 +100,7 @@ def verify(request):
 
 def scan(request):
     return render(request, 'scan.html')
+
 
 @login_required
 def dashboard(request):
@@ -255,4 +260,38 @@ def process_scan(user):
 
     send_email(user, log_type, now_time)
 
+def hash_demo_view(request):
+    result = None
+    salt = None
+    iterations = 100000  
+    error = None
 
+    if request.method == 'POST':
+        form = HashForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['message']
+
+            if 'encrypt' in request.POST:
+                salt = os.urandom(16)  # generate random 16-byte salt
+                hash_bytes = hashlib.pbkdf2_hmac(
+                    'sha256',
+                    text.encode('utf-8'),
+                    salt,
+                    iterations
+                )
+                result = binascii.hexlify(hash_bytes).decode('utf-8')
+                salt = binascii.hexlify(salt).decode('utf-8')
+
+            elif 'decrypt' in request.POST:
+                error = "Hashing is one-way. Decryption not possible."
+
+    else:
+        form = HashForm()
+
+    return render(request, 'hash_demo.html', {
+        'form': form,
+        'result': result,
+        'salt': salt,
+        'iterations': iterations,
+        'error': error,
+    })
