@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Login and Signup</title>
+    <link rel="stylesheet" href="{% static 'CSS/registercss.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-panel">
+            <h2>Register</h2>
+            <img src="{% static 'images/baste.png' %}" alt="Logo">
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" value="{{ form.first_name.value }}" required>
+                    {% if form.first_name.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.first_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" value="{{ form.last_name.value }}" required>
+                    {% if form.last_name.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.last_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="{{ form.username.value }}" required>
+                    {% if form.username.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="{{ form.email.value }}" required>
+                    {% if form.email.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" id="password1" name="password1" required oninput="checkPasswordStrength()">
+                    <div id="password-strength-message" class="strength-message"></div>
+                    <div class="strength-bar-container">
+                        <div id="password-strength-bar" class="strength-bar"></div>
+                    </div>
+
+                    {% if form.password1.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.password1.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" id="password2" name="password2" required>
+                    {% if form.password2.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.password2.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div class="right-panel">
+            <h2>Hello, Friend!</h2>
+            <p>Enter your details and start your journey with us.</p>
+            <button type="button" class="redirect-button">
+                <a href="{% url 'login' %}">SIGN IN</a>
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById("password1").value;
+            const message = document.getElementById("password-strength-message");
+            const bar = document.getElementById("password-strength-bar");
+        
+            const rules = [
+                { regex: /[A-Z]/, message: "Uppercase letter" },
+                { regex: /[a-z]/, message: "Lowercase letter" },
+                { regex: /[0-9]/, message: "Number" },
+                { regex: /[!@#$%^&*(),.?":{}|<>]/, message: "Special character" },
+                { regex: /.{8,}/, message: "At least 8 characters" },
+            ];
+        
+            let passed = 0;
+            let feedback = rules.map(rule => {
+                const passedRule = rule.regex.test(password);
+                if (passedRule) passed++;
+                return passedRule
+                    ? `<span style="color: green;">✔ ${rule.message}</span>`
+                    : `<span style="color: red;">✖ ${rule.message}</span>`;
+            });
+        
+            // Update message list
+            message.innerHTML = feedback.join("<br>");
+        
+            // Update strength bar
+            const strengthPercent = (passed / rules.length) * 100;
+            bar.style.width = `${strengthPercent}%`;
+        
+            // Change bar color based on strength
+            if (passed <= 2) {
+                bar.style.backgroundColor = "red";
+            } else if (passed === 3 || passed === 4) {
+                bar.style.backgroundColor = "orange";
+            } else if (passed === 5) {
+                bar.style.backgroundColor = "green";
+            }
+        }
+        </script>
+        
+
+</body>
+</html>

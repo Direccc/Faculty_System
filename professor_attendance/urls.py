@@ -18,15 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render
 from attendance import views
-from attendance.views import login_view  # Import your views
 
 def landing_page(request):
-    return render(request, 'studybit.html')  # No need to specify "templates/"
+    return render(request, 'Timein_Timeout.html')  # No need to specify "templates/"
 
 urlpatterns = [
-    path('', views.studybit, name='studybit'),
+    path('', views.landing, name='TimeIn_TimeOut'),
     path('admin/', admin.site.urls),
-    path('login/', login_view, name='login'),  
+    path('login/', views.login_view, name='login'),  
     path('register/', views.register, name='register'),  
     path('verify/', views.verify_otp, name='verify_otp'),  
     path('scan/', views.scan_page, name='scan'),  
@@ -36,4 +35,5 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     path('resend_otp/', views.resend_otp, name='resend_otp'),
     path('hash-demo/', views.hash_demo_view, name='hash_demo'),
+    path('forgot_password',views.forgot_password, name ='forgot_password'),
 ]

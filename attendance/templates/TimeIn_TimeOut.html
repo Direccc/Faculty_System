@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'CSS/landing.css' %}">
+  <title>Time-in/Time-out</title>
+</head>
+<body>
+  <div class="header">
+    <img src="{% static 'IMAGES/Patsborn1.png' %}" alt="Patsborn Logo">
+    <h1>Time-in/Time-out</h1>
+  </div>
+
+  <div class="main-box">
+    <div class="column">
+      <h2>Time In: None</h2>
+      <div class="photo-box">
+        <img src="{% static 'IMAGES/Vic.jpg' %}" alt="Time In Person">
+      </div>
+      <div class="details">
+        <p>Gate Entry:</p>
+        <p>Role:</p>
+        <p>User ID (RFID ID):</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="column">
+      <h2>Time Out: None</h2>
+      <div class="photo-box">
+        <!-- Empty box -->
+      </div>
+      <div class="details">
+        <p>Gate Out:</p>
+        <p>Role:</p>
+        <p>User ID (RFID ID):</p>
+      </div>
+    </div>
+  </div>
+
+  <input class="input-bar" type="text" placeholder="">
+</body>
+</html>
