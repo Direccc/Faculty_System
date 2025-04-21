@@ -28,6 +28,7 @@ from datetime import timedelta
 from .email_utils import send_otp_email, generate_otp, send_email # Import email functions
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
@@ -86,11 +87,22 @@ def gmail_auth_callback(request):
 
     return HttpResponse("Authentication successful! Gmail API is now authorized.")
 
-def studybit(request):
-    return render(request, 'studybit.html') 
+def landing(request):
+    return render(request, 'TimeIn_TimeOut.html') 
 
 def login_view(request):
-    return render(request, 'login.html')  
+    if request.method == 'POST':
+        username = request.POST.get('username')  # from the form
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')  # make sure this matches your URL name
+        else:
+            messages.error(request, 'Invalid username or password.')
+
+    return render(request, 'login.html')
 
 def register(request):
     return render(request, 'register.html')
@@ -101,8 +113,12 @@ def verify(request):
 def scan(request):
     return render(request, 'scan.html')
 
+def forgot_password(request):
+    return render(request, 'forgot_password.html')
 
-@login_required
+
+
+@login_required(login_url='login')
 def dashboard(request):
     return render(request, "dashboard.html")  
 

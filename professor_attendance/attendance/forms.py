@@ -1,3 +1,5 @@
+import re
+
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -11,6 +13,23 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email']
     
+    def clean_password1(self):
+        password = self.cleaned_data.get('password1')
+
+        # Password rules
+        if len(password) < 8:
+            raise forms.ValidationError("Password must be at least 8 characters long.")
+        if not re.search(r"[A-Z]", password):
+            raise forms.ValidationError("Password must contain at least one uppercase letter.")
+        if not re.search(r"[a-z]", password):
+            raise forms.ValidationError("Password must contain at least one lowercase letter.")
+        if not re.search(r"\d", password):
+            raise forms.ValidationError("Password must contain at least one digit.")
+        if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+            raise forms.ValidationError("Password must contain at least one special character.")
+
+        return password
+
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')

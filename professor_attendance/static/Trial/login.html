@@ -24,22 +24,13 @@
     <div class="sign-in-section">
       <div class="sign-in-content">
         <h2>Sign In</h2>
-        <img src="{% static 'IMAGES/Patsborn1.png' %}" alt="Patsborn Logo" class="logo">
+        <img src="{% static 'Patsborn1.png' %}" alt="Patsborn Logo" class="logo">
 
         <form method="post">
-          {% if messages %}
-            <div class="error-messages">
-              {% for message in messages %}
-                <p style="color: red; text-align: center;">{{ message }}</p>
-              {% endfor %}
-            </div>
-          {% endif %}
-
           {% csrf_token %}
-          
           <div class="input-group">
             <i class="fas fa-user icon"></i>
-            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
           </div>
           
           <div class="input-group">
@@ -47,7 +38,8 @@
             <input type="password" name="password" placeholder="Password" required>  
           </div>
 
-          <a href="{% url 'forgot_password' %}" class="forgot">Forgot Password?</a>
+          <a href="#" class="forgot">Forgot Password?</a>
+          <a href="{% url 'update_password' %}" class="update">Update Password</a>
 
           <button type="submit" class="sign-in-btn">Sign in</button>
         </form>

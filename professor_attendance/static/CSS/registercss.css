@@ -1,230 +1,156 @@
-@keyframes containerAnimation {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f2f5;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.container {
-    width: 920px;
-    height: auto;
-    display: flex;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    overflow: hidden;
-    background-color: #ffffff;
-    animation: containerAnimation 0.5s ease-out; /* Animation for the container */
+.reg-outer {
+  margin: 2rem auto;
+  width: 95%;
+  max-width: 1000px;
+  height: 600px;
+  padding: 1rem;
 }
 
-.left-panel {
-    flex: 1;
-    background-color: #ffffff;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    animation: slideInLeft 0.5s ease-out; /* Animation for the left panel */
+.reg-container {
+  background-color: #8B0000;
+  display: flex;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.right-panel {
-    flex: 1;
-    background-color: #0b2948;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    box-sizing: border-box;
-    animation: slideInRight 0.5s ease-out; /* Animation for the right panel */
+.reg-left-panel {
+  width: 35%;
+  background-color: #8B0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.left-panel h2 {
-    margin-bottom: 20px;
-    color: #0b2948;
-    font-size: 28px;
+.reg-left-panel img {
+  max-height: 200px;
+  max-width: 100%;
 }
 
-.left-panel img {
-    width: 100px;
-    margin-bottom: 20px;
+.reg-right-panel {
+  width: 53%;
+  height: 84%;
+  margin-top: 15px;
+  background-color: #f1b400;
+  border-top-left-radius: 160px;
+  border-bottom-left-radius: 160px;
+  padding: 2rem 3rem;
+  position: relative;
+  overflow-y: auto;
 }
 
-.left-panel form {
-    width: 100%;
-    max-width: 320px;
+.reg-right-panel h1 {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 2rem;
 }
 
-.left-panel form .form-group {
-    margin-bottom: 15px;
+form {
+  height: 100%;
 }
 
-.left-panel form label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #333;
+.reg-form-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.left-panel form input {
-    width: 100%;
-    padding: 12px;
-    margin: 5px 0;
-    border: 1px solid #dcdfe3;
-    border-radius: 15px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
+.reg-form-group input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 0.95rem;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.left-panel form input:focus {
-    border-color: #0b2948;
-    outline: none;
+.reg-form-group select {
+  width: 150px;
+  padding: 0.5rem 1rem;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 0.95rem;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.left-panel form a {
-    text-decoration: none;
-    font-size: 12px;
-    color: #888;
-    display: block;
-    margin-bottom: 20px;
-    text-align: right;
+.reg-register-button {
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 }
 
-.left-panel form button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 15px;
-    background-color: #0b2948;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.reg-register-button:hover {
+  animation: buttonHover 0.3s forwards;
+  background-color: #a10000;
 }
 
-.left-panel form button:hover {
-    background-color: #093164;
+/* Password strength styles */
+.strength-message {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  line-height: 1.4;
 }
 
-.right-panel h2 {
-    font-size: 30px;
-    margin-bottom: 15px;
-    text-align: center;
+.strength-bar-container {
+  width: 100%;
+  background-color: #ddd;
+  height: 6px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 0.3rem;
 }
 
-.right-panel p {
-    font-size: 16px;
-    margin-bottom: 25px;
-    text-align: center;
-    line-height: 1.5;
+.strength-bar {
+  height: 100%;
+  width: 0%;
+  background-color: red;
+  border-radius: 5px;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-.right-panel button {
-    padding: 12px 24px;
-    border: 2px solid #fff;
-    border-radius: 15px;
-    background: none;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.right-panel button:hover {
-    background-color: #fff;
-    color: #0b2948;
+@keyframes buttonHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
 }
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        width: 90%;
-        height: auto;
-    }
-
-    .left-panel, .right-panel {
-        flex: unset;
-        width: 100%;
-        padding: 20px;
-    }
-}
-
-.redirect-button a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.redirect-button {
-    padding: 12px 24px;
-    border: 2px solid #fff;
-    border-radius: 15px;
-    background: none;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.redirect-button:hover {
-    background-color: #fff;
-    color: #0b2948;
-}
-
-.left-panel form textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 5px 0;
-    border: 1px solid #dcdfe3;
-    border-radius: 15px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-    min-height: 100px;  /* Adjust height as needed */
-}
-
