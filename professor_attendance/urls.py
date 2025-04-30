@@ -35,5 +35,9 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     path('resend_otp/', views.resend_otp, name='resend_otp'),
     path('hash-demo/', views.hash_demo_view, name='hash_demo'),
-    path('forgot_password',views.forgot_password, name ='forgot_password'),
+    path('forgot-password/', views.forgot_password, name='forgot_password'),
+    path('verify-pass/', views.verify_pass, name='verify_pass'),  # Updated this line
+    path('update-password/', views.update_password, name='update_password'),
+    path('send-verification-code/', views.send_verification_code, name='send_verification_code'),
+
 ]

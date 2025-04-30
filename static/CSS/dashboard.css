@@ -1,29 +1,190 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
-}
+    font-family: Arial, sans-serif;
+    background-color: white;
+  }
 
-.container {
-    margin-top: 50px;
-}
-
-h1 {
-    color: #333;
-}
-
-.btn {
-    display: inline-block;
+  .header {
+    background-color: #801313;
+    color: white;
     padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #007bff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: "Jomolhari";
+  }
+
+  .header .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .header .logo img {
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .header .nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    margin-right: 50px;
+    font-family: "Jomolhari";
+  }
+
+  .header .nav-links a {
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-}
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
 
-.btn:hover {
-    background-color: #0056b3;
-}
+  .header .nav-links a:hover {
+    color: #f1b400;
+  }
+
+  .container {
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-box {
+    border: 5px solid #801313;
+    border-radius: 25px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+    width: 100%;
+    max-width: 960px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .chart {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    background-image: url('../IMAGES/timeinoutbg.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+  }
+
+  .site-name {
+    font-size: 20px;
+    font-family: "Jomolhari";
+    color: white;
+  }
+  
+  .export-button {
+    background-color: #801313;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    align-self: flex-end;
+    margin-right: calc(50% - 480px + 10px);
+  }
+
+  .export-button:hover {
+    background-color: #a11c1c;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes buttonHover {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
+  .header {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .chart-box {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .export-button {
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  .export-button:hover {
+    animation: buttonHover 0.3s forwards;
+    background-color: #f1b400;
+    transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header .nav-links {
+      flex-direction: column;
+      gap: 10px;
+      margin-right: 0;
+    }
+
+    .chart-box {
+      padding: 15px;
+    }
+
+    .export-button {
+      margin-right: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header .logo img {
+      height: 40px;
+    }
+
+    .header .nav-links a {
+      font-size: 12px;
+    }
+
+    .export-button {
+      font-size: 14px;
+      padding: 8px 15px;
+      margin-right: 10px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .header .nav-links a {
+      font-size: 11px;
+    }
+
+    .chart-box {
+      padding: 10px;
+    }
+
+    .chart {
+      aspect-ratio: 4 / 3;
+    }
+  }

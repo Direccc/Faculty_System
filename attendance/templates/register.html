@@ -13,7 +13,7 @@
   <div class="reg-outer">
     <div class="reg-container">
       <div class="reg-left-panel">
-        <a href="{% url 'login' %}"><img src="{% static 'IMAGES/baste.png' %}" alt="School Logo"></a>
+        <a href="{% url 'login' %}"><img src="{% static 'images/baste.png' %}" alt="School Logo"></a>
       </div>
       <div class="reg-right-panel">
         <h1>Registration</h1>
@@ -21,16 +21,17 @@
           {% csrf_token %}
 
           <div class="reg-form-group">
-            <input type="text" name="firstname" placeholder="First Name" value="{{ form.first_name.value|default_if_none:'' }}" required>
-            <input type="text" name="lastname" placeholder="Last Name" value="{{ form.last_name.value|default_if_none:'' }}" required>          
+            <input type="text" name="firstname" placeholder="First Name" value="{{ form.first_name.value }}" required>
+            <input type="text" name="lastname" placeholder="Last Name" value="{{ form.last_name.value }}" required>
           </div>
 
           <div class="reg-form-group">
-            <input type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}" required>
-            <input type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}" required>          </div>
+            <input type="email" name="email" placeholder="Email" value="{{ form.email.value }}" required>
+            <input type="password" id="password1" name="password1" placeholder="Password" required oninput="checkPasswordStrength()">
+          </div>
 
           <div class="reg-form-group">
-            <input type="password" id="password1" name="password1" placeholder="Password" required oninput="checkPasswordStrength()">
+            <input type="text" name="username" placeholder="Username" value="{{ form.username.value }}" required>
             <input type="password" id="password2" name="password2" placeholder="Confirm Password" required>
           </div>
 

@@ -32,6 +32,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
+from django.contrib.auth import update_session_auth_hash
 
 
 
@@ -115,6 +116,8 @@ def scan(request):
 
 def forgot_password(request):
     return render(request, 'forgot_password.html')
+
+
 
 
 
@@ -311,3 +314,104 @@ def hash_demo_view(request):
         'iterations': iterations,
         'error': error,
     })
+
+
+def send_verification_code(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            User = get_user_model()
+            try:
+                user = User.objects.get(email=email)
+
+                # Generate OTP using your function
+                otp_code = generate_otp()
+
+                # Save to session
+                request.session['reset_email'] = email
+                request.session['verification_code'] = otp_code
+
+                # Send OTP email using your function
+                success = send_otp_email(user_email=email, otp_code=otp_code)
+
+                if success:
+                    messages.success(request, 'Verification code sent! Please check your email.')
+                    return redirect('verify_pass')  # Go to verify page
+                else:
+                    messages.error(request, 'Failed to send email. Please try again later.')
+                    return redirect('forgot_password')
+
+            except User.DoesNotExist:
+                messages.error(request, 'Email not registered!')
+                return redirect('forgot_password')
+        else:
+            messages.error(request, 'Please enter your email.')
+            return redirect('forgot_password')
+    else:
+        return redirect('forgot_password')
+    
+
+def verify_pass(request):
+    if request.method == 'POST':
+        user_input_code = request.POST.get('code')
+        session_code = request.session.get('verification_code')
+
+        if not session_code:
+            messages.error(request, 'Session expired. Please request a new code.')
+            return redirect('forgot_password')
+
+        if user_input_code == session_code:
+            messages.success(request, 'Verification successful! You can now update your password.')
+            return redirect('update_password')
+        else:
+            messages.error(request, 'Incorrect code. Please try again.')
+            return redirect('verify_pass')
+    else:
+        return render(request, 'verifypass.html')  # Ensure this template exists
+
+
+def update_password(request):
+    email = request.session.get('reset_email')
+
+    # Check if there's no reset email in session or session expired
+    if not email:
+        messages.error(request, 'Unauthorized access or session expired. Please start the password reset process again.')
+        return redirect('forgot_password')
+
+    # Process POST request for password change
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+
+        # Password validation
+        if new_password != confirm_password:
+            messages.error(request, 'Passwords do not match.')
+            return redirect('update_password')  # Redirect to the same page for the user to try again
+
+        if len(new_password) < 8:
+            messages.error(request, 'Password must be at least 8 characters long.')
+            return redirect('update_password')
+
+        try:
+            # Get the user from the database using the email stored in the session
+            user = get_user_model().objects.get(email=email)
+            
+            # Update the password
+            user.set_password(new_password)
+            user.save()
+
+            # Log the user in immediately after updating the password
+            update_session_auth_hash(request, user)
+
+            # Clear the session data after the password update
+            del request.session['reset_email']
+            del request.session['verification_code']
+
+            messages.success(request, 'Password updated successfully! Please log in with your new password.')
+            return redirect('login')  # Redirect the user to the login page after success
+
+        except get_user_model().DoesNotExist:
+            messages.error(request, 'User not found.')
+            return redirect('login')  # If user not found, redirect to login
+
+    return render(request, 'UpdatePassword.html', {'email': email})  # Render the page with the email

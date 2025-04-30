@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +8,19 @@
   <title>Time-in/Time-out</title>
 </head>
 <body>
+
   <div class="header">
-    <img src="{% static 'IMAGES/Patsborn1.png' %}" alt="Patsborn Logo">
+    <div class="logo">
+      <img src="{% static 'images/Patsborn1.png' %}" alt="Logo" />
+      <div class="site-name"><strong>PatsBron</strong></div> <!-- fixed: add site-name class -->
+    </div>
+    <div class="nav-links">
+      <a href="{% url 'login' %}">Log-in</a>
+      <a href="{% url 'register' %}">Register</a>
+    </div>
+  </div>
+
+  <div class="title-header1">
     <h1>Time-in/Time-out</h1>
   </div>
 
@@ -18,7 +28,7 @@
     <div class="column">
       <h2>Time In: None</h2>
       <div class="photo-box">
-        <img src="{% static 'IMAGES/Vic.jpg' %}" alt="Time In Person">
+        <img src="{% static 'images/Patsborn1.png' %}" alt="Time In Person">
       </div>
       <div class="details">
         <p>Gate Entry:</p>
@@ -41,5 +51,6 @@
   </div>
 
   <input class="input-bar" type="text" placeholder="">
+
 </body>
 </html>

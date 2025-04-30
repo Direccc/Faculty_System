@@ -1,99 +1,179 @@
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #911c1c;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: 
+    linear-gradient(rgba(65, 38, 38, 0.85), rgba(53, 10, 10, 0.85)), 
+    url('../IMAGES/timeinoutbg.jpg') no-repeat center center fixed; /* <-- fixed */
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
 
+
+/* HEADER */
+.header {
+  background-color: #801313;
+  color: white;
+  margin-bottom: 60px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  font-family: "Jomolhari", serif;
+  box-sizing: border-box;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header .site-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.header .nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  font-family: "Jomolhari", serif;
+}
+
+.header .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.header .nav-links a:hover {
+  color: #f1b400;
+}
+
+@media (max-width: 768px) {
   .header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 10%;
-    box-sizing: border-box;
-  }
-
-  .header img {
-    height: 150px;
-  }
-
-  .header h1 {
-    color: white;
-    flex: 1;
-    padding-right: 19%;
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
-
-  .main-box {
-    background-color: #db9704;
-    border-radius: 15px;
-    width: 150%;
-    max-width: 900px;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    margin-top: 1rem;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  }
-
-  .column {
-    flex: 1;
-    display: flex;
-    padding: 1rem;
     flex-direction: column;
-    align-items: center;
-    color: white;
+    text-align: center;
   }
 
-  .divider {
-    width: 2px;
-    height: 100%;
-    background-color: white;
-    margin: 0 1rem;
+  .header .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
 
-  .column h2 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-  }
-
-  .photo-box {
-    width: 200px;
-    height: 320px; /* or 350px if the body is cut off */ 
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-
-  .photo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  
-  
-
-  .details {
-    font-size: 0.9rem;
-    color: white;
-    text-align: left;
-    width: 80%;
-  }
-
-  .input-bar {
-    background-color: white;
-    width: 80%;
-    max-width: 700px;
+  .header .logo img {
     height: 40px;
-    border-radius: 10px;
-    margin-top: 2rem;
   }
+}
+
+@media (max-width: 480px) {
+  .header .nav-links a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header .nav-links a {
+    font-size: 11px;
+  }
+}
+
+/* TITLE HEADER */
+.title-header1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.title-header1 img {
+  height: 100px;
+}
+
+.title-header1 h1 {
+  color: white;
+  flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* MAIN BOX */
+.main-box {
+  background-color: #db9704;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.divider {
+  width: 2px;
+  height: 100%;
+  background-color: white;
+  margin: 0 1rem;
+}
+
+.column h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.photo-box {
+  width: 200px;
+  height: 320px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.details {
+  font-size: 0.9rem;
+  color: white;
+  text-align: left;
+  width: 80%;
+}
+
+.input-bar {
+  background-color: white;
+  width: 90%;
+  max-width: 700px;
+  height: 40px;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
