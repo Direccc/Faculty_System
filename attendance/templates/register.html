@@ -19,33 +19,37 @@
         <h1>Registration</h1>
         <form method="POST">
           {% csrf_token %}
-
+        
           <div class="reg-form-group">
-            <input type="text" name="firstname" placeholder="First Name" value="{{ form.first_name.value }}" required>
-            <input type="text" name="lastname" placeholder="Last Name" value="{{ form.last_name.value }}" required>
+            <input type="text" name="first_name" placeholder="First Name" value="{{ form.first_name.value|default_if_none:'' }}" required>
+            <input type="text" name="last_name" placeholder="Last Name" value="{{ form.last_name.value|default:'' }}" required>
           </div>
-
+        
           <div class="reg-form-group">
-            <input type="email" name="email" placeholder="Email" value="{{ form.email.value }}" required>
+            <input type="email" name="email" placeholder="Email" value="{{ form.email.value|default:'' }}" required>
             <input type="password" id="password1" name="password1" placeholder="Password" required oninput="checkPasswordStrength()">
           </div>
-
+        
           <div class="reg-form-group">
-            <input type="text" name="username" placeholder="Username" value="{{ form.username.value }}" required>
+            <input type="text" name="username" placeholder="Username" value="{{ form.username.value|default:'' }}" required>
             <input type="password" id="password2" name="password2" placeholder="Confirm Password" required>
           </div>
-
-          <!-- Optional: Role selection (to be handled in views.py) -->
+        
+          <!-- Optional: Role selection (not handled by form, needs to be added to model & form if used) -->
           <div class="reg-form-group">
-            <select enable>
-              <option>Roles</option>
-              <option>Student</option>
-              <option>Teacher</option>
-              <option>Security</option>
-              <option>Janitorial</option>
+            <select name="role" required>
+              <option value="" disabled selected>Select Role</option>
+              <option value="professor">Professor</option>
+              <option value="faculty_staff">Faculty Staff</option>
+              <option value="admin">Admin</option>
+              <option value="it_support">IT Support</option>
+              <option value="security">Security</option>
+              <option value="janitorial">Janitorial</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="librarian">Librarian</option>
             </select>
           </div>
-
+        
           <!-- Password strength -->
           <div class="reg-form-group">
             <div id="password-strength-message" class="strength-message"></div>
@@ -53,9 +57,9 @@
               <div id="password-strength-bar" class="strength-bar" style="height: 100%; width: 0%; background-color: red; border-radius: 5px;"></div>
             </div>
           </div>
-
+        
           <button type="submit" class="reg-register-button">Register</button>
-        </form>
+        </form>        
       </div>
     </div>
   </div>

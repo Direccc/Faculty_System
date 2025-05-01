@@ -20,10 +20,11 @@ class User(AbstractUser):
         ('maintenance', 'Maintenance'),
         ('librarian', 'Librarian'),
     ]
-    
+
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    rfid_code = models.CharField(max_length=50, unique=True, null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)  # <-- Add this line
     created_at = models.DateTimeField(auto_now_add=True)
-    rfid_code = models.CharField(max_length=50, unique=True, null=True, blank=True)  
     groups = models.ManyToManyField(Group, related_name="custom_user_groups", blank=True)
     user_permissions = models.ManyToManyField(Permission, related_name="custom_user_permissions", blank=True)
 

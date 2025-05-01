@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render
 from attendance import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 def landing_page(request):
     return render(request, 'Timein_Timeout.html')  # No need to specify "templates/"
@@ -41,3 +43,5 @@ urlpatterns = [
     path('send-verification-code/', views.send_verification_code, name='send_verification_code'),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

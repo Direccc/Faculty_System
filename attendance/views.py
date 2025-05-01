@@ -89,7 +89,14 @@ def gmail_auth_callback(request):
     return HttpResponse("Authentication successful! Gmail API is now authorized.")
 
 def landing(request):
-    return render(request, 'TimeIn_TimeOut.html') 
+    latest_time_in = AttendanceLog.objects.filter(time_in__isnull=False).order_by('-time_in').first()
+    latest_time_out = AttendanceLog.objects.filter(time_out__isnull=False).order_by('-time_out').first()
+
+    context = {
+        'latest_time_in': latest_time_in,
+        'latest_time_out': latest_time_out,
+    }
+    return render(request, 'Timein_Timeout.html', context)
 
 def login_view(request):
     if request.method == 'POST':
@@ -138,9 +145,8 @@ def scan_page(request):
             user = User.objects.filter(rfid_code=rfid_code).first()
 
             if user:
-                # Get current time and convert to local timezone
-                scan_time_utc = timezone.now()  # Get UTC time
-                scan_time = scan_time_utc.astimezone(LOCAL_TZ)  # Convert to local timezone
+                scan_time_utc = timezone.now()
+                scan_time = scan_time_utc.astimezone(LOCAL_TZ)
 
                 today_logs = AttendanceLog.objects.filter(
                     user=user, time_in__date=scan_time.date()
@@ -148,29 +154,31 @@ def scan_page(request):
 
                 if today_logs.exists():
                     last_log = today_logs.first()
-
                     if not last_log.time_out:
-                        # Log Time Out
                         last_log.time_out = scan_time
                         last_log.save()
                         print(f"🕒 Logged OUT: {user.username} at {scan_time}")
-                        send_email(user, is_time_out=True, scan_time=scan_time)  # ✅ Pass scan_time
+                        send_email(user, is_time_out=True, scan_time=scan_time)
                     else:
-                        # Create a new Time In entry
                         AttendanceLog.objects.create(user=user, time_in=scan_time)
                         print(f"🕒 New Time IN: {user.username} at {scan_time}")
-                        send_email(user, is_time_out=False, scan_time=scan_time)  # ✅ Pass scan_time
+                        send_email(user, is_time_out=False, scan_time=scan_time)
                 else:
-                    # ✅ First scan of the day (Time In)
                     AttendanceLog.objects.create(user=user, time_in=scan_time)
                     print(f"🕒 First Time IN: {user.username} at {scan_time}")
-                    send_email(user, is_time_out=False, scan_time=scan_time)  # ✅ Pass scan_time
+                    send_email(user, is_time_out=False, scan_time=scan_time)
 
-                # ✅ Save scan log for record-keeping
                 RFIDLog.objects.create(user=user, scanned_rfid=rfid_code, scan_time=scan_time)
 
-    return render(request, "scan.html")
+    # 👇 Add this after handling POST (even if no user is found, so page still shows logs)
+    latest_time_in = AttendanceLog.objects.filter(time_in__isnull=False).order_by('-time_in').first()
+    latest_time_out = AttendanceLog.objects.filter(time_out__isnull=False).order_by('-time_out').first()
 
+    context = {
+        'latest_time_in': latest_time_in,
+        'latest_time_out': latest_time_out,
+    }
+    return render(request, "TimeIn_TimeOut.html", context)
 
 def register(request):
     if request.method == "POST":
@@ -197,6 +205,7 @@ def register(request):
             return redirect("verify_otp")  # Redirect to verify.html
 
         else:
+            print("Form errors:", form.errors)
             messages.error(request, "Registration failed. Please check the form.")
 
     else:

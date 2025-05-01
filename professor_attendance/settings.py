@@ -130,3 +130,6 @@ LOGIN_REDIRECT_URL = "/dashboard/"
 CREDENTIALS_PATH = os.path.join(BASE_DIR, "credentials.json")
 
 TIME_ZONE = "Asia/Manila"  # Set your local timezone
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

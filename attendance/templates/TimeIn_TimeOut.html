@@ -26,31 +26,64 @@
 
   <div class="main-box">
     <div class="column">
-      <h2>Time In: None</h2>
+      <h2>Time In: {{ latest_time_in.time_in|default:"None" }}</h2>
       <div class="photo-box">
-        <img src="{% static 'images/Patsborn1.png' %}" alt="Time In Person">
+        {% if latest_time_in.user.profile_picture %}
+          <img src="{{ latest_time_in.user.profile_picture.url }}" alt="Time In Person">
+        {% else %}
+          <img src="{% static 'images/default-profile.png' %}" alt="Default">
+        {% endif %}
       </div>
       <div class="details">
-        <p>Gate Entry:</p>
-        <p>Role:</p>
-        <p>User ID (RFID ID):</p>
+        <p><strong>Name:</strong> {{ latest_time_in.user.first_name }} {{ latest_time_in.user.last_name }}</p>
+        <p><strong>Role:</strong> {{ latest_time_in.user.role|title }}</p>
+        <p><strong>User ID:</strong> {{ latest_time_in.user.rfid_code }}</p>
       </div>
     </div>
+  
     <div class="divider"></div>
+  
     <div class="column">
-      <h2>Time Out: None</h2>
-      <div class="photo-box">
-        <!-- Empty box -->
-      </div>
-      <div class="details">
-        <p>Gate Out:</p>
-        <p>Role:</p>
-        <p>User ID (RFID ID):</p>
-      </div>
-    </div>
-  </div>
+      
+      <h2>Time Out: {{ latest_time_out.time_out|default:"None" }}</h2>
 
-  <input class="input-bar" type="text" placeholder="">
+        <div class="photo-box">
+          {% if latest_time_out.user.profile_picture %}
+            <img src="{{ latest_time_out.user.profile_picture.url }}" alt="Time Out Person">
+          {% else %}
+            <img src="{% static 'images/default-profile.png' %}" alt="Default">
+          {% endif %}
+        </div>
+
+        <div class="details">
+          <p><strong>Name:</strong> {{ latest_time_out.user.first_name }} {{ latest_time_out.user.last_name }}</p>
+          <p><strong>Role:</strong> {{ latest_time_out.user.role|title }}</p>
+          <p><strong>User ID:</strong> {{ latest_time_out.user.rfid_code }}</p>
+        </div>
+
+    </div>
+    
+  </div>
+  
+  <form id="rfid-form" method="POST" action="{% url 'scan' %}">
+    {% csrf_token %}
+    <input class="input-bar" type="text" id="rfid-input" name="rfid_code" autocomplete="off" required aria-label="Scan your RFID">
+  </form>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputField = document.getElementById("rfid-input");
+
+        inputField.focus(); // Autofocus on load
+        
+        inputField.addEventListener("input", function () {
+            if (inputField.value.length >= 10) {  // Adjust to match your RFID code length
+                document.getElementById("rfid-form").submit();
+            }
+        });
+    });
+  </script>
 
 </body>
 </html>
