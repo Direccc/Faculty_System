@@ -33,6 +33,8 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth import update_session_auth_hash
+from datetime import datetime, timedelta, time
+from .models import WorkSchedule, AttendanceRecord
 
 
 
@@ -163,10 +165,12 @@ def scan_page(request):
                         AttendanceLog.objects.create(user=user, time_in=scan_time)
                         print(f"🕒 New Time IN: {user.username} at {scan_time}")
                         send_email(user, is_time_out=False, scan_time=scan_time)
+                        handle_scan(user)  # ✅ trigger AttendanceRecord logic
                 else:
                     AttendanceLog.objects.create(user=user, time_in=scan_time)
                     print(f"🕒 First Time IN: {user.username} at {scan_time}")
                     send_email(user, is_time_out=False, scan_time=scan_time)
+                    handle_scan(user)  # ✅ trigger AttendanceRecord logic
 
                 RFIDLog.objects.create(user=user, scanned_rfid=rfid_code, scan_time=scan_time)
 
@@ -424,3 +428,39 @@ def update_password(request):
             return redirect('login')  # If user not found, redirect to login
 
     return render(request, 'UpdatePassword.html', {'email': email})  # Render the page with the email
+
+def handle_scan(user):
+    now = timezone.localtime()
+    current_time = now.time()
+    current_day = now.strftime('%A')
+    today = now.date()
+    NOON = time(12, 0)
+
+    try:
+        schedule = WorkSchedule.objects.get(role=user.role, day_of_week=current_day)
+    except WorkSchedule.DoesNotExist:
+        print(f"No schedule found for {user.role} on {current_day}")
+        return
+
+    grace_limit = (datetime.combine(today, schedule.start_time) + timedelta(minutes=schedule.grace_period)).time()
+
+    record, created = AttendanceRecord.objects.get_or_create(user=user, attendance_date=today)
+
+    if not record.time_in:
+        record.time_in = current_time
+
+        if current_time <= grace_limit:
+            record.status = 'present'
+        elif current_time <= NOON:
+            record.status = 'late'
+        elif NOON < current_time <= schedule.end_time:
+            record.status = 'halfday'
+        elif current_time > schedule.end_time:
+            record.status = 'overtime'
+        else:
+            record.status = 'absent'  # fallback
+
+    elif not record.time_out:
+        record.time_out = current_time
+
+    record.save()

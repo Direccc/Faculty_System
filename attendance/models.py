@@ -49,9 +49,11 @@ class WorkSchedule(models.Model):
 
 class AttendanceRecord(models.Model):
     STATUS_CHOICES = [
-        ('present', 'Present'),
-        ('late', 'Late'),
-        ('absent', 'Absent'),
+        ('present', 'Present (On Time)'),
+        ('late', 'Late (After Grace Period)'),
+        ('halfday', 'Halfday (PM Arrival)'),
+        ('overtime', 'Overtime (After End Time)'),
+        ('absent', 'Absent (No Scan)'),
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     attendance_date = models.DateField()
@@ -59,7 +61,7 @@ class AttendanceRecord(models.Model):
     time_out = models.TimeField(null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='absent')
     created_at = models.DateTimeField(auto_now_add=True)
-
+    
 class RFIDLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     scan_time = models.DateTimeField(auto_now_add=True)
@@ -77,10 +79,12 @@ class LateNotification(models.Model):
 
 class AttendanceCorrection(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
-        ('rejected', 'Rejected'),
-    ]
+    ('present', 'Present'),
+    ('late', 'Late'),
+    ('halfday', 'Half Day'),
+    ('overtime', 'Overtime'),
+    ('absent', 'Absent'),
+]
     
     attendance_record = models.ForeignKey(AttendanceRecord, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
