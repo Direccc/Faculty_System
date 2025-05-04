@@ -1,0 +1,236 @@
+Watching for file changes with StatReloader
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15149
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 200 10045
+"GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12357
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET / HTTP/1.1" 200 2284
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1960
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61300)
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+- Broken pipe from ('127.0.0.1', 61304)
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+"GET /login/ HTTP/1.1" 200 1960
+- Broken pipe from ('127.0.0.1', 61312)
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /static/css/dashboard.css HTTP/1.1" 304 0
+"GET /appeal/9/ HTTP/1.1" 200 1280
+"GET /static/css/appeal_form.css HTTP/1.1" 304 0
+"POST /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15122
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/4/change/ HTTP/1.1" 200 20217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/4/change/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15406
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15149
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 200 10045
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12357
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/9/change/ HTTP/1.1" 200 15056
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+- Broken pipe from ('127.0.0.1', 61347)
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+"GET /login/ HTTP/1.1" 200 2156
+- Broken pipe from ('127.0.0.1', 61353)
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /static/js/attendance_chart.js HTTP/1.1" 304 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12206
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /appeal/9/ HTTP/1.1" 200 1280
+- Broken pipe from ('127.0.0.1', 61367)
+"POST /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15119
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/5/change/ HTTP/1.1" 200 20217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/5/change/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15400
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 200 10045
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12357
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+- Broken pipe from ('127.0.0.1', 61397)
+- Broken pipe from ('127.0.0.1', 61399)
+"GET /login/ HTTP/1.1" 200 2156
+- Broken pipe from ('127.0.0.1', 61402)
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /appeal/9/ HTTP/1.1" 200 1280
+"POST /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/user/ HTTP/1.1" 200 14945
+"GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15122
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/6/change/ HTTP/1.1" 200 20217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/6/change/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15406
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+- Broken pipe from ('127.0.0.1', 61454)
+"GET /login/ HTTP/1.1" 200 2156
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /static/css/dashboard.css HTTP/1.1" 304 0
+"GET /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15149
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 200 10045
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12357
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /static/css/dashboard.css HTTP/1.1" 200 6196
+"GET /static/images/Patsborn1.png HTTP/1.1" 200 54089
+"GET /static/js/attendance_chart.js HTTP/1.1" 200 4971
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5190
+"GET /appeal/9/ HTTP/1.1" 200 1280
+"GET /static/css/appeal_form.css HTTP/1.1" 200 871
+"POST /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15122
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/7/change/ HTTP/1.1" 200 20217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/7/change/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15406
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+- Broken pipe from ('127.0.0.1', 61488)
+- Broken pipe from ('127.0.0.1', 61490)
+"GET /login/ HTTP/1.1" 200 2288
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+Watching for file changes with StatReloader
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61609)
+- Broken pipe from ('127.0.0.1', 61607)
+"GET /login/ HTTP/1.1" 200 1960
+"GET /static/CSS/styles.css HTTP/1.1" 200 3899
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /static/css/dashboard.css HTTP/1.1" 304 0
+"GET /static/js/attendance_chart.js HTTP/1.1" 304 0
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15149
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 200 10045
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12357
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /appeal/9/ HTTP/1.1" 200 1280
+"GET /static/css/appeal_form.css HTTP/1.1" 304 0
+"POST /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15122
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/8/change/ HTTP/1.1" 200 20217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/8/change/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15406
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/9/change/ HTTP/1.1" 200 15056
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15149
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 200 10045
+"POST /admin/attendance/attendancecorrection/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 12357
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET / HTTP/1.1" 200 2284
+"GET /static/images/default-profile.png HTTP/1.1" 404 1892
+- Broken pipe from ('127.0.0.1', 61811)
+"GET /login/ HTTP/1.1" 200 2156
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /static/css/dashboard.css HTTP/1.1" 304 0
+"GET /static/js/attendance_chart.js HTTP/1.1" 304 0
+"GET /appeal/9/ HTTP/1.1" 200 1280
+"GET /static/css/appeal_form.css HTTP/1.1" 304 0
+"POST /appeal/9/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 5852
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15122
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancecorrection/9/change/ HTTP/1.1" 200 20217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/attendance/attendancecorrection/9/change/ HTTP/1.1" 302 0
+"GET /admin/attendance/attendancecorrection/ HTTP/1.1" 200 15406
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/9/change/ HTTP/1.1" 200 15056
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/attendance/attendancerecord/ HTTP/1.1" 200 13905
+C:\Users\aaron\Documents\GitHub\Faculty_System\attendance\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\aaron\Documents\GitHub\Faculty_System\professor_attendance\settings.py changed, reloading.

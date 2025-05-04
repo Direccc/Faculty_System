@@ -7,29 +7,100 @@
   <link href="https://fonts.googleapis.com/css2?family=Jomolhari&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
   <title>PatsBron</title>
+
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <div class="header">
     <div class="logo">
       <img src="{% static 'images/Patsborn1.png' %}" alt="Logo" />
-      <div class="site-name"><strong>PatsBron</strong></div> <!-- Added .site-name class for consistency -->
+      <div class="site-name"><strong>PATSBorn</strong></div>
     </div>
     <div class="nav-links">
-      <form action="{% url 'logout' %}" method="post" style="display: inline;">
-          {% csrf_token %}
-          <button type="submit" class="logout-button">Log-out</button>
+      <form action="{% url 'logout' %}" method="post" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-button">Log-out</button>
       </form>
-      <a href="#">{{ user.username }}</a> <!-- Shows the logged-in username -->
+      <a href="#" class="username" data-fullname="{{ user.first_name }} {{ user.last_name }}">{{ user.username }}</a>
     </div>
   </div>
 
   <div class="container">
-    <div class="chart-box">
-      <div class="chart">
-        <!-- You can later insert a graph/chart here using Chart.js or whatever you like -->
-      </div>
+
+    <div class="monthly-chart">
+      <h2>Attendance Last 3 Months</h2>
+      <canvas id="monthlyAttendanceChart" height="200"></canvas>
     </div>
-    <button class="export-button">Export</button>
+
+    <!-- Attendance Summary with Progress Bars -->
+    <div class="attendance-summary">
+      <h2>Attendance Summary (This Month)</h2>
+      {% for status, percentage in status_counts.items %}
+      <div class="status-row" data-count="{{ percentage }}">
+          <div class="status-label">{{ status|title }}</div> <!-- Removed percentage -->
+          <div class="progress-bar" style="--percentage-width: {{ percentage|default:'0'|floatformat:1 }}%">
+              <div class="fill {{ status }}"></div>
+          </div>
+      </div>
+      {% empty %}
+      <p>No attendance records available for this month.</p>
+      {% endfor %}
   </div>
+  
+    
+
+    <!-- Daily Attendance Logs Table -->
+    <div class="daily-attendance">
+      <h2>Daily Logs</h2>
+      <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+                <th>Appeal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in daily_logs %}
+                <tr>
+                    <td>{{ log.date }}</td>
+                    <td>{{ log.status }}</td>
+                    <td>{{ log.time_in }}</td>
+                    <td>{{ log.time_out }}</td>
+                    <td>
+                        {% if log.status == "Absent (No Scan)" and log.id %}
+                            <a href="{% url 'submit_appeal' log.id %}" class="appeal-link">Appeal</a>
+                        {% else %}
+                            ✅
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+    </div>
+  </div>
+
+  <!-- JSON data -->
+  <script id="attendance-data" type="application/json">
+    {{ attendance_data|safe }}
+  </script>
+
+  <script id="attendance-data-3months" type="application/json">
+    {{ attendance_chart_data|safe }}
+  </script>
+
+  <script>
+  var countValue = parseFloat("{{ count|default_if_none:0|floatformat:2 }}");
+</script>
+
+  <!-- Chart.js + Custom Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{% static 'js/attendance_chart.js' %}"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@ import re
 
 from django import forms
 from django.contrib.auth import get_user_model
+from .models import AttendanceCorrection
 
 User = get_user_model()
 
@@ -47,3 +48,11 @@ class RegisterForm(forms.ModelForm):
 
 class HashForm(forms.Form):
     message = forms.CharField(label='Enter text', max_length=255)
+
+class AttendanceCorrectionForm(forms.ModelForm):
+    class Meta:
+        model = AttendanceCorrection
+        fields = ['requested_time_in', 'requested_time_out', 'reason']
+        widgets = {
+            'reason': forms.Textarea(attrs={'rows': 3}),
+        }

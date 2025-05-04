@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Appeal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/appeal_form.css' %}">
+</head>
+<body>
+  <div class="appeal-form-container">
+    <h2>Submit Appeal for Attendance on {{ record.attendance_date|date:"F d, Y (l)" }}</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      
+      <!-- Requested Time In -->
+      <div class="form-group">
+        <label for="requested_time_in">{{ form.requested_time_in.label }}</label>
+        {{ form.requested_time_in }}
+      </div>
+
+      <!-- Requested Time Out -->
+      <div class="form-group">
+        <label for="requested_time_out">{{ form.requested_time_out.label }}</label>
+        {{ form.requested_time_out }}
+      </div>
+
+      <!-- Reason -->
+      <div class="form-group">
+        <label for="reason">{{ form.reason.label }}</label>
+        {{ form.reason }}
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Appeal</button>
+    </form>
+  </div>
+</body>
+</html>

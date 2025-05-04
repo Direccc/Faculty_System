@@ -1,190 +1,355 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: white;
-  }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+}
 
+.header {
+  background-color: #801313;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Jomolhari";
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  height: 50px;
+  margin-right: 12px;
+}
+
+.header .site-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.header .nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header .nav-links .logout-form {
+  margin: 0;
+}
+
+.header .logout-button {
+  background-color: #f1b400;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.header .logout-button:hover {
+  background-color: #801313;
+  transform: scale(1.05);
+}
+
+.header .logout-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(241, 180, 0, 0.6);
+}
+
+.header .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header .nav-links a:hover {
+  color: #f1b400;
+  transform: scale(1.05);
+}
+
+.container {
+  padding: 3% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-box {
+  border: 5px solid #801313;
+  border-radius: 15px;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 960px;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+}
+
+.chart {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  background-image: url('../IMAGES/timeinoutbg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.export-button {
+  background-color: #801313;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+  align-self: flex-start;
+  margin-left: calc(50% - 480px + 20px);
+  font-size: 16px;
+}
+
+.export-button:hover {
+  background-color: #f1b400;
+  transform: scale(1.05);
+}
+
+.attendance-summary {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 960px;
+}
+
+.attendance-summary h2 {
+  font-size: 24px;
+  color: #801313;
+  margin-bottom: 15px;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between; /* Evenly distributes space between items */
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.status-label {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: capitalize;
+  width: 150px; /* Fixed width to ensure consistent spacing */
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  height: 20px; /* Example height */
+  width: 100%; /* Ensures the bar fills the available width */
+  margin-left: 10px;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  width: var(--percentage-width, 0); /* Use the dynamic percentage width */
+  transition: width 0.6s ease-in-out;
+  border-radius: 12px;
+}
+
+.fill.present {
+  background-color: #4caf50; /* Green */
+}
+
+.fill.late {
+  background-color: #ff9800; /* Orange */
+}
+
+.fill.absent {
+  background-color: #f44336; /* Red */
+}
+
+.fill.halfday {
+  background-color: #ffeb3b; /* Yellow */
+}
+
+.fill.overtime {
+  background-color: #2196f3; /* Blue */
+}
+
+
+.daily-attendance {
+  margin-top: 45px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.daily-attendance h2 {
+  font-size: 26px;
+  color: #801313;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.daily-attendance table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.daily-attendance th {
+  background-color: #801313;
+  color: #fff;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.daily-attendance td {
+  padding: 12px;
+  text-align: center;
+  font-size: 15px;
+  background-color: #fff;
+}
+
+.daily-attendance tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+.daily-attendance tr:hover td {
+  background-color: #f1f1f1;
+}
+
+.appeal-link {
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.appeal-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.header {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.chart-box {
+  animation: fadeIn 1s ease-out;
+}
+
+.export-button {
+  animation: fadeIn 1.2s ease-out;
+}
+
+.export-button:hover {
+  animation: buttonHover 0.3s forwards;
+}
+
+@media (max-width: 768px) {
   .header {
-    background-color: #801313;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    font-family: "Jomolhari";
-  }
-
-  .header .logo {
-    display: flex;
-    align-items: center;
-  }
-
-  .header .logo img {
-    height: 50px;
-    margin-right: 10px;
+    text-align: center;
   }
 
   .header .nav-links {
-    display: flex;
-    gap: 20px;
-    font-size: 14px;
-    margin-right: 50px;
-    font-family: "Jomolhari";
-  }
-
-  .header .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-
-  .header .nav-links a:hover {
-    color: #f1b400;
+    flex-direction: column;
+    gap: 15px;
+    margin-right: 0;
   }
 
   .container {
-    padding-top: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-top: 10%;
   }
 
   .chart-box {
-    border: 5px solid #801313;
-    border-radius: 25px;
-    padding: 20px;
-    background-color: #f0f0f0;
-    text-align: center;
-    width: 100%;
-    max-width: 960px;
-    box-sizing: border-box;
-    position: relative;
+    padding: 25px;
+  }
+
+  .export-button {
+    margin-right: 0;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .logo img {
+    height: 45px;
+  }
+
+  .header .nav-links a {
+    font-size: 14px;
+  }
+
+  .export-button {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header .nav-links a {
+    font-size: 13px;
+  }
+
+  .chart-box {
+    padding: 15px;
   }
 
   .chart {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    aspect-ratio: 16 / 10;
-    background-image: url('../IMAGES/timeinoutbg.jpg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0 auto;
+    aspect-ratio: 4 / 3;
   }
+}
 
-  .site-name {
-    font-size: 20px;
-    font-family: "Jomolhari";
-    color: white;
-  }
-  
-  .export-button {
-    background-color: #801313;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-    align-self: flex-end;
-    margin-right: calc(50% - 480px + 10px);
-  }
+.monthly-chart {
+  width: 100%;          
+  max-width: 1000px;  
+  margin: 40px auto;   
+  padding: 20px;    
+  height: 100%;   
+}
 
-  .export-button:hover {
-    background-color: #a11c1c;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes buttonHover {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.05);
-    }
-  }
-
-  .header {
-    animation: fadeIn 0.8s ease-out;
-  }
-
-  .chart-box {
-    animation: fadeIn 1s ease-out;
-  }
-
-  .export-button {
-    animation: fadeIn 1.2s ease-out;
-  }
-
-  .export-button:hover {
-    animation: buttonHover 0.3s forwards;
-    background-color: #f1b400;
-    transition: background-color 0.3s ease, transform 0.3s ease-in-out;
-  }
-
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .header .nav-links {
-      flex-direction: column;
-      gap: 10px;
-      margin-right: 0;
-    }
-
-    .chart-box {
-      padding: 15px;
-    }
-
-    .export-button {
-      margin-right: 10px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .header .logo img {
-      height: 40px;
-    }
-
-    .header .nav-links a {
-      font-size: 12px;
-    }
-
-    .export-button {
-      font-size: 14px;
-      padding: 8px 15px;
-      margin-right: 10px;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .header .nav-links a {
-      font-size: 11px;
-    }
-
-    .chart-box {
-      padding: 10px;
-    }
-
-    .chart {
-      aspect-ratio: 4 / 3;
-    }
-  }

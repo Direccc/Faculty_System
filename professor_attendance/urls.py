@@ -41,7 +41,7 @@ urlpatterns = [
     path('verify-pass/', views.verify_pass, name='verify_pass'),  # Updated this line
     path('update-password/', views.update_password, name='update_password'),
     path('send-verification-code/', views.send_verification_code, name='send_verification_code'),
-
+    path('appeal/<int:record_id>/', views.submit_appeal, name='submit_appeal'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

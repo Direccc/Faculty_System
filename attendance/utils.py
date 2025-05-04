@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from django.utils.timezone import make_aware, is_aware, get_current_timezone
 from django.apps import apps
+from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 def process_attendance(user):
     """Check the latest RFID scan and determine attendance status."""
@@ -63,3 +65,24 @@ def process_attendance(user):
         attendance.save()
 
     return status
+
+def mark_absent_users_for_today():
+    from .models import AttendanceRecord  # Move the import inside the function
+    User = get_user_model()
+    today = timezone.localdate()  # Get today's date
+
+    # Get all users who have an attendance record for today
+    users_with_attendance = AttendanceRecord.objects.filter(attendance_date=today).values_list('user_id', flat=True)
+
+    # Get all users who don't have attendance yet for today
+    absent_users = User.objects.exclude(id__in=users_with_attendance)
+
+    # Create attendance records for absent users
+    for user in absent_users:
+        AttendanceRecord.objects.create(
+            user=user,
+            attendance_date=today,
+            status='absent'
+        )
+        print(f"Marked absent: {user.username}")
+
