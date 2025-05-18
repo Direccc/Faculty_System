@@ -102,3 +102,45 @@ transition: background-color 0.3s ease;
   background-color: #f44336; /* Red */
   color: white;
 }
+
+
+  .header {
+  width: 100%;
+  background-color: #8B0000;
+  color: white;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+
+
+.logo {
+  padding: 10px 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.site-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}

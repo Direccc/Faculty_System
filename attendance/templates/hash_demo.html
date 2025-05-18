@@ -1,25 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>PBKDF2 Hash Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h2>PBKDF2 Hashing Demo</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" name="encrypt">Encrypt (Hash)</button>
-        <button type="submit" name="decrypt">Decrypt</button>
-    </form>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen flex items-center justify-center text-white">
+    <div class="w-full max-w-2xl p-10 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700">
+        <h1 class="text-4xl font-bold text-center mb-10 text-white tracking-wide">
+            🔐 PBKDF2 Hashing Tool
+        </h1>
 
-    {% if result %}
-        <p><strong>Salt:</strong> {{ salt }}</p>
-        <p><strong>Iterations:</strong> {{ iterations }}</p>
-        <p><strong>Hash:</strong> {{ result }}</p>
-    {% endif %}
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
 
-    {% if error %}
-        <p style="color:red;"><strong>{{ error }}</strong></p>
-    {% endif %}
+            <div>
+                <label for="{{ form.message.id_for_label }}" class="block text-lg font-medium mb-2">
+                    Enter Text to Hash
+                </label>
+                {{ form.message }}
+            </div>
+
+            <div class="flex space-x-6">
+                <button type="submit" name="encrypt"
+                        class="w-1/2 bg-indigo-600 hover:bg-indigo-700 transition-all duration-200 py-4 text-xl font-semibold rounded-xl shadow-md">
+                    Encrypt (Hash)
+                </button>
+                <button type="submit" name="decrypt"
+                        class="w-1/2 bg-pink-600 hover:bg-pink-700 transition-all duration-200 py-4 text-xl font-semibold rounded-xl shadow-md">
+                    Decrypt
+                </button>
+            </div>
+        </form>
+
+        {% if result %}
+            <div class="mt-10 bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <h2 class="text-2xl font-semibold mb-4">🔍 Hash Result</h2>
+                <p><strong class="text-indigo-400">Salt:</strong> <span class="break-all">{{ salt }}</span></p>
+                <p><strong class="text-indigo-400">Iterations:</strong> {{ iterations }}</p>
+                <p><strong class="text-indigo-400">Hash:</strong> <span class="break-all">{{ result }}</span></p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="mt-6 p-4 bg-red-800 border border-red-600 rounded-lg">
+                <p class="font-semibold text-red-200 text-lg">{{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <style>
+        /* Apply Tailwind-like styling to Django's default input */
+        input[type="text"], textarea {
+            background-color: #1f2937; /* gray-800 */
+            color: white;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 0.5rem;
+            border: 1px solid #374151; /* gray-700 */
+            outline: none;
+        }
+        input[type="text"]:focus, textarea:focus {
+            border-color: #6366f1; /* indigo-500 */
+            box-shadow: 0 0 0 2px #6366f1;
+        }
+    </style>
 </body>
 </html>

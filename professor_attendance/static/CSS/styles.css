@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Jomolhari", serif;
   }
   
   .container {
@@ -50,7 +50,6 @@
   
   .logo {
     width: 150px;
-    margin: 20px auto;
     display: block;
   }
   
@@ -205,3 +204,45 @@
       max-width: 100%;
     }
   }
+
+  /* Header */
+.header {
+  width: 100%;
+  padding: 10px 30px;
+  background-color: #8B0000;
+  color: white;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+
+
+.logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.site-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}

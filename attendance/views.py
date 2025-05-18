@@ -248,9 +248,6 @@ def register(request):
 
 def verify_otp(request):
     user_id = request.session.get("pending_user_id")
-    if not user_id:
-        messages.error(request, "Session expired. Please register again.")
-        return redirect("register")
 
     user = User.objects.get(id=user_id)
 

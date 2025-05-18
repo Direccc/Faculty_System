@@ -1,27 +1,35 @@
+/* General Styles */
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
+    background:
+        linear-gradient(rgba(65, 38, 38, 0.85), rgba(53, 10, 10, 0.85)),
+        url('../IMAGES/timeinoutbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f2f5;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .container {
     width: 420px;
     padding: 40px;
-    background-color: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: rgba(219, 151, 4, 0.95); /* warm gold */
     border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.5s ease-out;
     text-align: center;
+    color: white;
 }
 
 h2 {
-    color: #0b2948;
+    color: #330b0b; /* dark burgundy */
     font-size: 24px;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 form {
@@ -31,26 +39,29 @@ form {
 form label {
     display: block;
     font-size: 14px;
-    color: #333;
+    color: #330b0b; /* dark burgundy */
     margin-bottom: 8px;
     text-align: left;
+    font-weight: 600;
 }
 
 form input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #dcdfe3;
+    border: 1px solid #a87f00; /* gold-ish border */
     border-radius: 15px;
     font-size: 14px;
-    color: #333;
-    background-color: #f9f9f9;
+    color: #330b0b;
+    background-color: #fff8dc; /* light warm cream */
     box-sizing: border-box;
     margin-bottom: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 form input:focus {
-    border-color: #0b2948;
+    border-color: #801313; /* deep red */
     outline: none;
+    box-shadow: 0 0 8px rgba(128, 19, 19, 0.7);
 }
 
 form button {
@@ -58,18 +69,58 @@ form button {
     padding: 12px;
     border: none;
     border-radius: 15px;
-    background-color: #0b2948;
-    color: #fff;
+    background-color: #801313; /* rich dark red */
+    color: #f1b400; /* gold */
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 8px rgba(128, 19, 19, 0.6);
 }
 
 form button:hover {
-    background-color: #093164;
+    background-color: #a31c1c; /* slightly lighter red */
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(163, 28, 28, 0.8);
 }
 
+/* Messages styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Different message tags */
+.success {
+    background-color: #f1b400; /* gold */
+    color: #330b0b; /* dark burgundy */
+}
+
+.error {
+    background-color: #801313; /* rich dark red */
+    color: #fff;
+}
+
+.warning {
+    background-color: #a87f00; /* muted gold */
+    color: #330b0b;
+}
+
+.info {
+    background-color: #330b0b; /* dark burgundy */
+    color: #f1b400;
+}
+
+/* Fade-in animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -81,6 +132,7 @@ form button:hover {
     }
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -94,4 +146,50 @@ form button:hover {
     form button {
         font-size: 14px;
     }
+}
+
+form + form button {
+    margin-top: 15px; /* Adds space above the resend button */
+}
+
+
+ .header {
+  width: 100%;
+  background-color: #8B0000;
+  color: white;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+
+
+.logo {
+  padding: 10px 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.site-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
 }

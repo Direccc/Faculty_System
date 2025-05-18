@@ -9,6 +9,16 @@
   <title>Verification Code</title>
 </head>
 <body>
+
+<div class="header">
+  <div class="logo">
+    <a href="{% url 'TimeIn_TimeOut' %}" class="logo-link">
+      <img src="{% static 'images/Patsborn1.png' %}" alt="Logo" />
+      <div class="site-name"><strong>PatsBron</strong></div>
+    </a>
+  </div>
+</div>
+  
   <div class="verification-box">
     <h1>Enter Verification Code</h1>
     <form method="POST" action="{% url 'verify_pass' %}">

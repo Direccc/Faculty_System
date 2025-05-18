@@ -55,4 +55,6 @@ class AttendanceCorrectionForm(forms.ModelForm):
         fields = ['requested_time_in', 'requested_time_out', 'reason']
         widgets = {
             'reason': forms.Textarea(attrs={'rows': 3}),
+            'requested_time_in': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),
+            'requested_time_out': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),
         }
